@@ -14,3 +14,8 @@ provider:
   runtime: nodejs10.x
   stage: prod
   region: us-east-2
+
+  # These environment variables are made available to our functions
+  # under process.env.
+  environment:
+    tableName: notes
