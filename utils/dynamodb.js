@@ -5,3 +5,5 @@ export function call(action, params) {
 
   return dynamoDb[action](params).promise();
 }
+
+export default { call };
