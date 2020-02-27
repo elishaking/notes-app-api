@@ -1,0 +1,16 @@
+service: notes-app-api
+
+# Create an optimized package for functions
+package:
+  individually: true
+
+plugins:
+  - serverless-bundle # Package functions with Webpack
+  - serverless-offline
+  - serverless-dotenv-plugin # Load .env as environment variables
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: prod
+  region: us-east-2
