@@ -8,6 +8,7 @@ plugins:
   - serverless-bundle # Package functions with Webpack
   - serverless-offline
   - serverless-dotenv-plugin # Load .env as environment variables
+  - serverless-plugin-typescript # TypeScript Support
 
 provider:
   name: aws
