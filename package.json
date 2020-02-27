@@ -1,0 +1,18 @@
+{
+  "name": "notes-app-api",
+  "version": "1.0.0",
+  "description": "Serverless API",
+  "main": "handler.js",
+  "repository": "https://github.com/elishaking/notes-app-api.git",
+  "author": "King Elisha <ek.chibueze@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "aws-sdk": "^2.627.0",
+    "serverless-bundle": "^1.2.5",
+    "serverless-dotenv-plugin": "^2.1.1",
+    "serverless-offline": "^5.3.3"
+  },
+  "dependencies": {
+    "uuid": "^7.0.1"
+  }
+}
