@@ -1,4 +1,4 @@
-import uuid from "uuid";
+import { v1 } from "uuid";
 import AWS from "aws-sdk";
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
@@ -16,7 +16,7 @@ export function main(event, context, callback) {
     TableName: process.env.tableName,
     Item: {
       userId: event.requestContext.identity.cognitoIdentityId,
-      noteId: uuid.v1(),
+      noteId: v1(),
       content: data.content,
       attachment: data.attachment,
       createdAt: Date.now()
