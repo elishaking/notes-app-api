@@ -1,5 +1,5 @@
-import dynamoDBUtil from "../utils/dynamodb";
-import { success, failure } from "../utils/response";
+import dynamoDBUtil from "./utils/dynamodb";
+import { success, failure } from "./utils/response";
 
 export async function main(event) {
   const params = {
