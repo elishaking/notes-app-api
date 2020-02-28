@@ -6,7 +6,7 @@ export function failure(body) {
   return buildResponse(500, body);
 }
 
-function buildResponse(statusCode, body) {
+function buildResponse(statusCode: number, body) {
   return {
     statusCode: statusCode,
     headers: {
