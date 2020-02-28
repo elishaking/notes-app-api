@@ -21,6 +21,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "stripe": "^8.24.0",
     "uuid": "^7.0.1"
   }
 }
