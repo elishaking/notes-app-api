@@ -4,10 +4,17 @@ service: notes-app-api
 package:
   individually: true
 
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+
 plugins:
-  - serverless-bundle # Package functions with Webpack
+  - serverless-webpack
+  # - serverless-bundle # Package functions with Webpack
   - serverless-offline
   - serverless-dotenv-plugin # Load .env as environment variables
+  # - serverless-plugin-typescript # TypeScript Support
 
 provider:
   name: aws

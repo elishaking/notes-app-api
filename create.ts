@@ -4,12 +4,12 @@ import dynamoDBUtil from "./utils/dynamodb";
 import { success, failure } from "./utils/response";
 
 /**
- *
+ * Create new note document
  * @param {*} event
  * @param {*} context
  * @param {*} callback
  */
-export async function main(event, context, callback) {
+export async function main(event) {
   const data = JSON.parse(event.body);
 
   const params = {
