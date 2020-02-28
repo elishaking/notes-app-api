@@ -80,3 +80,27 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+
+  # Defines an HTTP API endpoint that calls the main function in update.js
+  # - path: url path is /notes/{id}
+  # - method: PUT request
+  update:
+    handler: update.main
+    events:
+      - http:
+          path: notes/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
+
+  # Defines an HTTP API endpoint that calls the main function in delete.js
+  # - path: url path is /notes/{id}
+  # - method: DELETE request
+  delete:
+    handler: delete.main
+    events:
+      - http:
+          path: notes/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam
