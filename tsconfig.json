@@ -2,12 +2,19 @@
   "compilerOptions": {
     "preserveConstEnums": true,
     "strictNullChecks": true,
+    "removeComments": true,
     "sourceMap": true,
-    "allowJs": true,
-    "target": "es5",
+    "target": "es2017",
+    "lib": ["es2017"],
     "outDir": ".build",
-    "moduleResolution": "node",
-    "lib": ["es2015"],
-    "rootDir": "./"
-  }
+    "moduleResolution": "node"
+  },
+  "include": ["./**/*.ts"],
+  "exclude": [
+    "node_modules/**/*",
+    ".serverless/**/*",
+    ".webpack/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*"
+  ]
 }
