@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 
-type Action = "put" | "get" | "update";
+type Action = any; // "put" | "get" | "update";
 
 export function call(action: Action, params: any) {
   const dynamoDb = new DynamoDB.DocumentClient();
