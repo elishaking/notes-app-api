@@ -73,10 +73,10 @@ functions:
   # - path: url path is /notes
   # - method: GET request
   list:
-  handler: list.main
-  events:
-    - http:
-        path: notes
-        method: get
-        cors: true
-        authorizer: aws_iam
+    handler: list.main
+    events:
+      - http:
+          path: notes
+          method: get
+          cors: true
+          authorizer: aws_iam
