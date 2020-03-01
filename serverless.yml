@@ -9,6 +9,11 @@ custom:
     webpackConfig: ./webpack.config.js
     includeModules: true
 
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
+
 plugins:
   - serverless-webpack
   # - serverless-bundle # Package functions with Webpack
