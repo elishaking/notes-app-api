@@ -9,17 +9,20 @@ custom:
     webpackConfig: ./webpack.config.js
     includeModules: true
 
-# Create our resources with separate CloudFormation templates
-resources:
-  # API Gateway Errors
-  - ${file(resources/api-gateway-errors.yml)}
-
 plugins:
   - serverless-webpack
   # - serverless-bundle # Package functions with Webpack
   - serverless-offline
   - serverless-dotenv-plugin # Load .env as environment variables
   # - serverless-plugin-typescript # TypeScript Support
+
+custom:
+  # Our stage is based on what is passed in when running serverless
+  # commands. Or fallsback to what we have set in the provider section.
+  stage: ${opt:stage, self:provider.stage}
+
+  # Set the table name here so we can use it while testing locally
+  tableName: ${self:custom.stage}-notes
 
 provider:
   name: aws
@@ -30,7 +33,7 @@ provider:
   # These environment variables are made available to our functions
   # under process.env.
   environment:
-    tableName: notes
+    tableName: ${self:custom.tableName}
     stripeSecretKey: ${env:STRIPE_SECRET_KEY}
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
@@ -45,7 +48,12 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-east-2:*:*"
+
+      # Resource: "arn:aws:dynamodb:us-east-2:*:*"
+      # Restrict our IAM role permissions to
+      # the specific table for the stage
+      Resource:
+        - "Fn::GetAtt": [ NotesTable, Arn ]
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.ts
@@ -122,3 +130,11 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
+
+  # DynamoDB
+  - ${file(resources/dynamodb-table.yml)}
